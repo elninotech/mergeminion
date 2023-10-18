@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: docker/dev/Dockerfile
+        networks:
+          - development
+        expose:
+          - "8000"
+        env_file:
+          - .env
+        volumes:
+          - .:/mergeminion
+    ngrok:
+        image: shkoliar/ngrok
+        ports:
+          - "4551:4551"
+        links:
+          - app
+        networks:
+          - development
+        environment:
+          - DOMAIN=app
+          - PORT=8000
+          - DEBUG=true
+networks:
+  development:

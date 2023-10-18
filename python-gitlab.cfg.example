@@ -1,0 +1,10 @@
+[global]
+default = example
+ssl_verify = true
+timeout = 5
+
+[team]
+url = https://gitlab.team.tech
+private_token = {PAT}
+per_page = 100
+api_version = 4
