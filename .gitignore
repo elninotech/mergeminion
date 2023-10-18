@@ -140,3 +140,4 @@ cython_debug/
 .idea/
 
 python-gitlab.cfg
+.DS_Store
