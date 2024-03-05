@@ -13,16 +13,19 @@ services:
         volumes:
           - .:/mergeminion
     ngrok:
-        image: shkoliar/ngrok
+        image: 'ngrok/ngrok:alpine'
+        environment:
+            NGROK_AUTHTOKEN: '${NGROK_AUTHTOKEN}'
+            NGROK_DEBUG: true
+        command: 'http app:8000 --log stdout --log-level info | grep -Eoh "https.+\.ngrok\.io" --line-buffered | awk "{print "Proxy address: " $0; fflush("/dev/stdout")}"'
         ports:
-          - "4551:4551"
-        links:
+            - '4551:4551'
+        depends_on:
           - app
+        expose:
+            - '4551'
         networks:
           - development
-        environment:
-          - DOMAIN=app
-          - PORT=8000
-          - DEBUG=true
 networks:
   development:
+    driver: bridge
