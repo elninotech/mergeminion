@@ -172,7 +172,7 @@ def parse_update_into_message(update_type: str, old_assignees: str, old_reviewer
         update_type = 'assigned_and_unassigned_reviewers'
 
     switcher = {
-        "target_change": "has changed the target branch of",
+        "target_change": "changed the target branch of",
         "new_commit": f"added a new commit <{deep_get(request.json,'object_attributes.last_commit.url')}|{deep_get(request.json,'object_attributes.last_commit.id')[:8]}> to",
         "unassigned_assignees": "unassigned " + ','.join(map(str, unassigned_assignees)) + " from",
         "unassigned_reviewers": "unassigned " + ','.join(map(str, unassigned_reviewers)) + " from reviewers of",
