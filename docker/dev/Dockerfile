@@ -1,6 +1,4 @@
-FROM python:3.8-slim-buster
-
-RUN apt-get update
+FROM python:3.11-alpine
 
 COPY ./requirements.txt /mergeminion/requirements.txt
 

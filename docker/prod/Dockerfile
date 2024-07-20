@@ -1,7 +1,5 @@
-FROM python:3.8-slim-buster
+FROM python:3.11-alpine
 
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends gfortran
 RUN pip3 install uwsgi
 
 COPY ./requirements.txt /mergeminion/requirements.txt
